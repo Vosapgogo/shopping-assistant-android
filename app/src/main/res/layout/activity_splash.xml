@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FAF9F6"> <!-- Твій теплий білий фон -->
+
+    <!-- Центральний блок: Картинка та тексти -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingHorizontal="32dp">
+
+        <!-- Картинка кошика -->
+        <!-- Поки що стоїть іконка списку, щоб не було помилки.
+             Пізніше заміниш на свою SVG картинку кошика -->
+        <ImageView
+            android:id="@+id/splash_image"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginBottom="24dp"
+            android:src="@drawable/img_empty_lists"
+            android:contentDescription="@null" />
+
+        <!-- Назва додатка -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito"
+            android:text="AI Shopping\nAssistant"
+            android:textAlignment="center"
+            android:textColor="#2E7D32"
+            android:textSize="32sp"
+            android:textFontWeight="900"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Підзаголовок -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito"
+            android:text="Your smart way to plan\nand save"
+            android:textAlignment="center"
+            android:textColor="#4A4A4A"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <!-- Індикатор завантаження (крутилка внизу) -->
+    <ProgressBar
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="80dp"
+        android:indeterminateTint="#2E7D32" /> <!-- Темно-зелений колір -->
+
+</RelativeLayout>
