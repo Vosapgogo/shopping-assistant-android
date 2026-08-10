@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="#FAF9F6"> <!-- Твій теплий білий фон -->
 
-    <!-- Центральний блок: Картинка та тексти -->
+    <!-- Central Part -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -13,9 +13,7 @@
         android:orientation="vertical"
         android:paddingHorizontal="32dp">
 
-        <!-- Картинка кошика -->
-        <!-- Поки що стоїть іконка списку, щоб не було помилки.
-             Пізніше заміниш на свою SVG картинку кошика -->
+        <!-- Image -->
         <ImageView
             android:id="@+id/splash_image"
             android:layout_width="200dp"
@@ -24,7 +22,7 @@
             android:src="@drawable/img_empty_lists"
             android:contentDescription="@null" />
 
-        <!-- Назва додатка -->
+        <!-- App name -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -36,7 +34,7 @@
             android:textFontWeight="900"
             android:layout_marginBottom="16dp" />
 
-        <!-- Підзаголовок -->
+        <!-- Subtext -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -47,7 +45,7 @@
             android:textSize="18sp" />
     </LinearLayout>
 
-    <!-- Індикатор завантаження (крутилка внизу) -->
+    <!-- ProgressBar in the bottom -->
     <ProgressBar
         android:layout_width="48dp"
         android:layout_height="48dp"
