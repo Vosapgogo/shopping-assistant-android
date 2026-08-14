@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
+    <color name="brand_green">#2E7D32</color>
+    <color name="brand_green_ripple">#332E7D32</color>
+    <color name="button_cancel_grey">#757575</color>
+
+    <color name="bg_light">#FAF9F6</color>
+    <color name="text_black">#1A1A1A</color>
+    <color name="text_dark_grey">#4A4A4A</color>
+    <color name="white">#FFFFFF</color>
 </resources>
