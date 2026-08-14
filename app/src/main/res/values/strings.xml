@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">AI Shopping Assistant</string>
-    <string name="empty_state_placeholder">Sprint 0 — тут з\'явиться список покупок (Sprint 1)</string>
+
+    <!-- Splash Screen -->
+    <string name="splash_title">AI Shopping\nAssistant</string>
+    <string name="splash_subtitle">Your smart way to plan\nand save</string>
+
+    <!-- Dialog -->
+    <string name="hint_list_name">List name</string>
+    <string name="dialog_title_new_list">New List</string>
+    <string name="action_create">Create</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="msg_list_created">List created: </string>
+
+    <!-- Main Activity -->
+    <string name="title_my_lists">My Lists</string>
+    <string name="empty_state_title">You don\'t have any\nshopping lists yet</string>
+    <string name="empty_state_subtitle">Create your first list to\nstart saving time</string>
+    <string name="btn_create_new_list">+ Create New List</string>
+
+    <!-- Bottom Navigation -->
+    <string name="nav_lists">Lists</string>
+    <string name="nav_prices">Prices</string>
+    <string name="nav_map">Map</string>
+    <string name="nav_profile">Profile</string>
 </resources>
