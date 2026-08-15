@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FAF9F6"> <!-- Твій теплий білий фон -->
+    android:background="@color/bg_light">
 
     <!-- Central Part -->
     <LinearLayout
@@ -27,9 +27,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/nunito"
-            android:text="AI Shopping\nAssistant"
+            android:text="@string/splash_title"
             android:textAlignment="center"
-            android:textColor="#2E7D32"
+            android:textColor="@color/brand_green"
             android:textSize="32sp"
             android:textFontWeight="900"
             android:layout_marginBottom="16dp" />
@@ -39,9 +39,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/nunito"
-            android:text="Your smart way to plan\nand save"
+            android:text="@string/splash_subtitle"
             android:textAlignment="center"
-            android:textColor="#4A4A4A"
+            android:textColor="@color/text_dark_grey"
             android:textSize="18sp" />
     </LinearLayout>
 
@@ -52,6 +52,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="80dp"
-        android:indeterminateTint="#2E7D32" /> <!-- Темно-зелений колір -->
+        android:indeterminateTint="@color/brand_green" />
 
 </RelativeLayout>

@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- Колір активної вкладки (темно-зелений, як у твоєму дизайні) -->
-    <item android:state_checked="true" android:color="#2E7D32" />
+    <item android:state_checked="true" android:color="@color/brand_green" />
 
-    <!-- Колір неактивної вкладки (стандартний сірий) -->
-    <item android:color="#757575" />
+    <item android:color="@color/button_cancel_grey" />
 </selector>
