@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- App Name (if not already defined) -->
     <string name="app_name">AI Shopping Assistant</string>
+
+    <!-- Welcome Screen -->
+    <string name="welcome_title">AI Shopping Assistant</string>
+    <string name="welcome_subtitle">Your smart way to plan\nand save money</string>
+
+    <!-- Welcome Screen Features -->
+    <string name="feature_voice">Create shopping lists\nwith your voice</string>
+    <string name="feature_ai">AI turns your voice into\norganized lists</string>
+    <string name="feature_price">Compare prices and find\nthe best deals</string>
+
+    <!-- Welcome Screen Buttons -->
+    <string name="btn_login">Log In</string>
+    <string name="btn_create_account">Create Account</string>
+
+    <!-- Welcome Screen Footer -->
+    <string name="terms_and_privacy">By continuing, you agree to our\nTerms of Service and Privacy Policy</string>
 
     <!-- Splash Screen -->
     <string name="splash_title">AI Shopping\nAssistant</string>
