@@ -21,6 +21,23 @@
             </intent-filter>
         </activity>
 
+        <!-- Welcome Screen -->
+        <activity
+            android:name=".WelcomeActivity"
+            android:exported="false" />
+
+        <!-- Login Screen -->
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Registration Screen -->
+        <activity
+            android:name=".RegistrationActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
         <!-- Main Screen (Main Activity) -->
         <activity
             android:name=".MainActivity"
