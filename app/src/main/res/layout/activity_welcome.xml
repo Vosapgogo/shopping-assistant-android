@@ -159,12 +159,13 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="8dp"
             android:fontFamily="@font/nunito"
             android:text="@string/btn_login"
             android:textAllCaps="false"
             android:textSize="16sp"
-            app:cornerRadius="8dp"
+            app:cornerRadius="12dp"
             app:backgroundTint="@color/brand_green" />
 
         <!-- Create Account Button -->
@@ -172,14 +173,14 @@
             android:id="@+id/btn_create_account"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="60dp"
             android:layout_marginBottom="16dp"
             android:fontFamily="@font/nunito"
             android:text="@string/btn_create_account"
             android:textAllCaps="false"
             android:textColor="@color/brand_green"
             android:textSize="16sp"
-            app:cornerRadius="8dp"
+            app:cornerRadius="12dp"
             app:strokeColor="@color/brand_green" />
 
         <!-- Policy Text -->
