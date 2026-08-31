@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground"
+    tools:context=".ProfileActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp"
+            android:paddingBottom="32dp"
+            android:gravity="center_horizontal">
+
+            <ImageView
+                android:id="@+id/ivProfileAvatar"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/ic_person"
+                android:src="@drawable/ic_person"
+                android:contentDescription="Profile Avatar"
+                app:tint="?attr/colorPrimary" />
+
+            <TextView
+                android:id="@+id/tvUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Sarah Jenkins"
+                android:textAppearance="?attr/textAppearanceHeadlineSmall"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvUserEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="sarah.jenkins@example.com"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="?android:attr/textColorSecondary" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="8dp"
+                android:text="Account Settings"
+                android:textAppearance="?attr/textAppearanceTitleMedium"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/menuPersonalInformation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="16dp"
+                android:text="Personal Information"
+                android:textAppearance="?attr/textAppearanceBodyLarge"
+                android:gravity="center_vertical"
+                android:background="?attr/selectableItemBackground"
+                app:drawableStartCompat="@drawable/ic_person"
+                app:drawableEndCompat="@drawable/ic_chevron_right"
+                android:drawablePadding="16dp" />
+
+            <TextView
+                android:id="@+id/menuShoppingPreferences"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="16dp"
+                android:text="Shopping Preferences"
+                android:textAppearance="?attr/textAppearanceBodyLarge"
+                android:gravity="center_vertical"
+                android:background="?attr/selectableItemBackground"
+                app:drawableStartCompat="@drawable/ic_person"
+                app:drawableEndCompat="@drawable/ic_chevron_right"
+                android:drawablePadding="16dp" />
+
+            <TextView
+                android:id="@+id/menuNotificationSettings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="16dp"
+                android:text="Notification Settings"
+                android:textAppearance="?attr/textAppearanceBodyLarge"
+                android:gravity="center_vertical"
+                android:background="?attr/selectableItemBackground"
+                app:drawableStartCompat="@drawable/ic_person"
+                app:drawableEndCompat="@drawable/ic_chevron_right"
+                android:drawablePadding="16dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="8dp"
+                android:text="Support &amp; About"
+                android:textAppearance="?attr/textAppearanceTitleMedium"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/menuHelpCenter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="16dp"
+                android:text="Help Center"
+                android:textAppearance="?attr/textAppearanceBodyLarge"
+                android:gravity="center_vertical"
+                android:background="?attr/selectableItemBackground"
+                app:drawableStartCompat="@drawable/ic_person"
+                app:drawableEndCompat="@drawable/ic_chevron_right"
+                android:drawablePadding="16dp" />
+
+            <TextView
+                android:id="@+id/menuAboutApp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="16dp"
+                android:text="About the App"
+                android:textAppearance="?attr/textAppearanceBodyLarge"
+                android:gravity="center_vertical"
+                android:background="?attr/selectableItemBackground"
+                app:drawableStartCompat="@drawable/ic_person"
+                app:drawableEndCompat="@drawable/ic_chevron_right"
+                android:drawablePadding="16dp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="24dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLogout"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Log Out"
+                android:textColor="?attr/colorError"
+                app:strokeColor="?attr/colorError"
+                android:paddingVertical="12dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
