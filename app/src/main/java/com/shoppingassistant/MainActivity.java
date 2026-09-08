@@ -1,5 +1,6 @@
 package com.shoppingassistant;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,22 +32,23 @@ public class MainActivity extends AppCompatActivity {
             if (itemId == R.id.nav_lists) {
                 tvPageTitle.setText(R.string.title_my_lists);
                 contentLists.setVisibility(View.VISIBLE);
-                return true;
 
+                return true;
             } else if (itemId == R.id.nav_prices) {
                 tvPageTitle.setText(R.string.nav_prices);
                 contentLists.setVisibility(View.GONE);
-                return true;
 
+                return true;
             } else if (itemId == R.id.nav_map) {
                 tvPageTitle.setText(R.string.nav_map);
                 contentLists.setVisibility(View.GONE);
-                return true;
 
-            } else if (itemId == R.id.nav_profile) {
-                tvPageTitle.setText(R.string.nav_profile);
-                contentLists.setVisibility(View.GONE);
                 return true;
+            } else if (itemId == R.id.nav_profile) {
+                Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                startActivity(intent);
+
+                return false;
             }
 
             return false;
