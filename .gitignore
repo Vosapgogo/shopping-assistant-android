@@ -14,3 +14,15 @@
 .cxx
 local.properties
 .refact/
+
+# Android / Gradle
+**/build/
+.gradle
+
+# Android Studio
+/.idea/
+*.iml
+
+# Local files
+local.properties
+.DS_Store
