@@ -41,4 +41,15 @@
     <string name="nav_prices">Prices</string>
     <string name="nav_map">Map</string>
     <string name="nav_profile">Profile</string>
+    <string name="log_in">Log In</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="secret_password">••••••••</string>
+    <string name="password">Password</string>
+    <string name="example_email_com">example@email.com</string>
+    <string name="email">Email</string>
+    <string name="log_in_to_continue_to_your_account">Log in to continue to your account</string>
+    <string name="welcome_back">Welcome back! 👋</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="sign_up">Sign up</string>
+    <string name="continue_with_google">Continue with Google</string>
 </resources>

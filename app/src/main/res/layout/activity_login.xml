@@ -47,7 +47,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="Log In"
+                    android:text="@string/log_in"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:textColor="@color/text_dark_grey"/>
@@ -57,7 +57,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Welcome back! 👋"
+                android:text="@string/welcome_back"
                 android:textSize="28sp"
                 android:textStyle="bold"
                 android:textColor="@color/brand_green"
@@ -66,7 +66,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Log in to continue to your account"
+                android:text="@string/log_in_to_continue_to_your_account"
                 android:textSize="16sp"
                 android:textColor="@color/text_dark_grey"
                 android:layout_marginBottom="32dp"/>
@@ -75,34 +75,37 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Email"
+                android:text="@string/email"
                 android:textStyle="bold"
                 android:textColor="@color/text_dark_grey"
                 android:layout_marginBottom="4dp"/>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_email_login"
                 style="@style/CustomInputField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:startIconDrawable="@drawable/ic_mail">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_email_login"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
-                    android:hint="example@email.com"/>
+                    android:hint="@string/example_email_com"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Password Field -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Password"
+                android:text="@string/password"
                 android:textStyle="bold"
                 android:textColor="@color/text_dark_grey"
                 android:layout_marginBottom="4dp"/>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_password_login"
                 style="@style/CustomInputField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -110,17 +113,18 @@
                 app:endIconMode="password_toggle">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_password_login"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
-                    android:hint="••••••••"/>
+                    android:hint="@string/secret_password"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Forgot Password -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Forgot password?"
+                android:text="@string/forgot_password"
                 android:textColor="@color/brand_green"
                 android:textStyle="bold"
                 android:layout_marginBottom="32dp"/>
@@ -139,10 +143,11 @@
 
         <!-- Login Button -->
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_login_submit"
             style="@style/CustomPrimaryButton"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:text="Log In"
+            android:text="@string/log_in"
             android:layout_marginBottom="24dp"/>
 
         <!-- Or Divider -->
@@ -163,7 +168,7 @@
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:text="Continue with Google"
+            android:text="@string/continue_with_google"
             android:textAllCaps="false"
             android:textColor="@color/text_dark_grey"
             app:icon="@drawable/ic_google"
@@ -183,14 +188,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Don't have an account? "
+                android:text="@string/don_t_have_an_account"
                 android:textColor="@color/text_dark_grey"/>
 
             <TextView
                 android:id="@+id/tv_go_to_signup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sign up"
+                android:text="@string/sign_up"
                 android:textColor="@color/brand_green"
                 android:textStyle="bold"
                 android:padding="4dp"

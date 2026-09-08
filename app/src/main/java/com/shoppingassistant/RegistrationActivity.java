@@ -100,9 +100,16 @@ public class RegistrationActivity extends AppCompatActivity {
             authRepository.register(name, email, password, new AuthRepository.AuthCallback() {
                 @Override
                 public void onSuccess(String message) {
-                    Toast.makeText(RegistrationActivity.this, message, Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
+                    android.content.SharedPreferences prefs = getSharedPreferences("AppPrefs", MODE_PRIVATE);
+                    android.content.SharedPreferences.Editor editor = prefs.edit();
+                    editor.putBoolean("isLoggedIn", true);
+                    editor.apply();
+
+                    Toast.makeText(RegistrationActivity.this, "Account created successfully!", Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(RegistrationActivity.this, MainActivity.class);
                     startActivity(intent);
+
                     finish();
                 }
 
