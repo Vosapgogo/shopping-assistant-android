@@ -25,4 +25,21 @@ public interface ApiService {
         public String name;
         public String email;
     }
+
+    @POST("api/v1/auth/login")
+    Call<LoginResponse> login(@Body LoginRequest request);
+
+    class LoginRequest {
+        public String email;
+        public String password;
+
+        public LoginRequest(String email, String password) {
+            this.email = email;
+            this.password = password;
+        }
+    }
+
+    class LoginResponse {
+        public String token;
+    }
 }
