@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Android 11 and older. The JWT lives in EncryptedSharedPreferences: its key is in the
+     Android Keystore, which is NOT restored on a new device, so a restored token file
+     would be unreadable. Keep the token and its keyset out of backups. -->
 <full-backup-content>
-    <!-- Sprint 15+: виключити JWT-токен з бекапу, коли з'явиться EncryptedSharedPreferences. -->
+    <exclude domain="sharedpref" path="secure_prefs.xml" />
+    <exclude domain="sharedpref" path="__androidx_security_crypto_encrypted_prefs__.xml" />
+    <exclude domain="sharedpref" path="AppPrefs.xml" />
 </full-backup-content>

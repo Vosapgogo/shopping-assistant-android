@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Android 12+. Same reasoning as backup_rules.xml: the encrypted JWT and its keyset must
+     not be restored onto another device, where the Keystore key no longer exists. -->
 <data-extraction-rules>
     <cloud-backup>
-        <!-- Sprint 15+: виключити JWT-токен з cloud-backup. -->
+        <exclude domain="sharedpref" path="secure_prefs.xml" />
+        <exclude domain="sharedpref" path="__androidx_security_crypto_encrypted_prefs__.xml" />
+        <exclude domain="sharedpref" path="AppPrefs.xml" />
     </cloud-backup>
+    <device-transfer>
+        <exclude domain="sharedpref" path="secure_prefs.xml" />
+        <exclude domain="sharedpref" path="__androidx_security_crypto_encrypted_prefs__.xml" />
+        <exclude domain="sharedpref" path="AppPrefs.xml" />
+    </device-transfer>
 </data-extraction-rules>
