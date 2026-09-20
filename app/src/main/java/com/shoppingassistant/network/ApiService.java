@@ -42,4 +42,10 @@ public interface ApiService {
     class LoginResponse {
         public String token;
     }
+
+    /** Error body sent by the backend; "code" is e.g. EMAIL_NOT_FOUND / WRONG_PASSWORD (null for other errors). */
+    class ErrorResponse {
+        public String code;
+        public String error;
+    }
 }

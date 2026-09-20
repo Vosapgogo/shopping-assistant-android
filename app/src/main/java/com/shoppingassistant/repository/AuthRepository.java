@@ -10,6 +10,9 @@ import androidx.security.crypto.MasterKey;
 import com.shoppingassistant.network.ApiClient;
 import com.shoppingassistant.network.ApiService;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -35,7 +38,10 @@ public class AuthRepository {
     /** What went wrong, so the UI can react differently (field error vs. toast vs. redirect). */
     public enum ErrorKind {
         NETWORK,
+        /** Login failed and the server didn't say whether the email or the password was wrong. */
         INVALID_CREDENTIALS,
+        EMAIL_NOT_FOUND,
+        WRONG_PASSWORD,
         EMAIL_TAKEN,
         VALIDATION,
         SERVER,
@@ -100,7 +106,14 @@ public class AuthRepository {
                         callback.onError(ErrorKind.SERVER, "Could not store your session securely on this device");
                     }
                 } else if (response.code() == 401) {
-                    callback.onError(ErrorKind.INVALID_CREDENTIALS, "Invalid email or password");
+                    String code = readErrorCode(response);
+                    if ("EMAIL_NOT_FOUND".equals(code)) {
+                        callback.onError(ErrorKind.EMAIL_NOT_FOUND, "No account found with this email");
+                    } else if ("WRONG_PASSWORD".equals(code)) {
+                        callback.onError(ErrorKind.WRONG_PASSWORD, "Incorrect password");
+                    } else {
+                        callback.onError(ErrorKind.INVALID_CREDENTIALS, "Invalid email or password");
+                    }
                 } else if (response.code() == 400) {
                     callback.onError(ErrorKind.VALIDATION, "Please check your email and password");
                 } else {
@@ -113,6 +126,19 @@ public class AuthRepository {
                 callback.onError(ErrorKind.NETWORK, "Can't reach the server. Check your internet connection and try again");
             }
         });
+    }
+
+    /** Extracts the "code" field from a JSON error body, or null if there is none / it can't be parsed. */
+    private static String readErrorCode(Response<?> response) {
+        try {
+            if (response.errorBody() == null) {
+                return null;
+            }
+            ApiService.ErrorResponse error = new Gson().fromJson(response.errorBody().string(), ApiService.ErrorResponse.class);
+            return error != null ? error.code : null;
+        } catch (IOException | JsonSyntaxException e) {
+            return null;
+        }
     }
 
     /**

@@ -101,12 +101,21 @@ public class LoginActivity extends AppCompatActivity {
                     Log.d(TAG, "Login error (" + kind + "): " + error);
                 }
 
-                if (kind == AuthRepository.ErrorKind.INVALID_CREDENTIALS) {
-                    // Only wrong credentials point at the fields; network/server problems must not
-                    layoutEmail.setError(error);
-                    layoutPassword.setError(error);
-                } else {
-                    Toast.makeText(LoginActivity.this, error, Toast.LENGTH_LONG).show();
+                // Only credential problems point at the fields; network/server problems must not
+                switch (kind) {
+                    case EMAIL_NOT_FOUND:
+                        layoutEmail.setError(error);
+                        break;
+                    case WRONG_PASSWORD:
+                        layoutPassword.setError(error);
+                        break;
+                    case INVALID_CREDENTIALS:
+                        layoutEmail.setError(error);
+                        layoutPassword.setError(error);
+                        break;
+                    default:
+                        Toast.makeText(LoginActivity.this, error, Toast.LENGTH_LONG).show();
+                        break;
                 }
             }
         });
