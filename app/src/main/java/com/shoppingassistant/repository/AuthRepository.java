@@ -2,6 +2,7 @@ package com.shoppingassistant.repository;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Base64;
 
 import androidx.security.crypto.EncryptedSharedPreferences;
 import androidx.security.crypto.MasterKey;
@@ -9,7 +10,11 @@ import androidx.security.crypto.MasterKey;
 import com.shoppingassistant.network.ApiClient;
 import com.shoppingassistant.network.ApiService;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.security.GeneralSecurityException;
 
 import retrofit2.Call;
@@ -27,29 +32,55 @@ public class AuthRepository {
         this.apiService = ApiClient.getApiService();
     }
 
-    public interface AuthCallback {
-        void onSuccess(String message);
-        void onError(String error);
+    /** What went wrong, so the UI can react differently (field error vs. toast vs. redirect). */
+    public enum ErrorKind {
+        NETWORK,
+        INVALID_CREDENTIALS,
+        EMAIL_TAKEN,
+        VALIDATION,
+        SERVER,
+        /** The account was created, but the automatic login right after it failed. */
+        ACCOUNT_CREATED_LOGIN_FAILED
     }
 
-    public void register(String name, String email, String password, AuthCallback callback) {
+    public interface AuthCallback {
+        void onSuccess(String message);
+        void onError(ErrorKind kind, String error);
+    }
+
+    public void register(String name, String email, String password, Context context, AuthCallback callback) {
         ApiService.RegisterRequest request = new ApiService.RegisterRequest(name, email, password);
 
         apiService.register(request).enqueue(new Callback<ApiService.RegisterResponse>() {
             @Override
             public void onResponse(Call<ApiService.RegisterResponse> call, Response<ApiService.RegisterResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    callback.onSuccess("Registration successful!");
+                    // /register returns no token. Log in right away, otherwise the user
+                    // would be treated as logged in while having no JWT to call the API with.
+                    login(email, password, context, new AuthCallback() {
+                        @Override
+                        public void onSuccess(String message) {
+                            callback.onSuccess("Account created successfully!");
+                        }
+
+                        @Override
+                        public void onError(ErrorKind kind, String error) {
+                            callback.onError(ErrorKind.ACCOUNT_CREATED_LOGIN_FAILED,
+                                    "Account created, but automatic login failed. Please log in.");
+                        }
+                    });
                 } else if (response.code() == 409) {
-                    callback.onError("Email already exists (409 Conflict)");
+                    callback.onError(ErrorKind.EMAIL_TAKEN, "This email is already registered");
+                } else if (response.code() == 400) {
+                    callback.onError(ErrorKind.VALIDATION, "Please check the entered data and try again");
                 } else {
-                    callback.onError("Registration failed: " + response.code());
+                    callback.onError(ErrorKind.SERVER, "Something went wrong on our side. Please try again later");
                 }
             }
 
             @Override
             public void onFailure(Call<ApiService.RegisterResponse> call, Throwable t) {
-                callback.onError("Network error: " + t.getMessage());
+                callback.onError(ErrorKind.NETWORK, "Can't reach the server. Check your internet connection and try again");
             }
         });
     }
@@ -66,18 +97,53 @@ public class AuthRepository {
                         saveToken(context, token);
                         callback.onSuccess("Login successful!");
                     } catch (GeneralSecurityException | IOException e) {
-                        callback.onError("Security error: " + e.getMessage());
+                        callback.onError(ErrorKind.SERVER, "Could not store your session securely on this device");
                     }
+                } else if (response.code() == 401) {
+                    callback.onError(ErrorKind.INVALID_CREDENTIALS, "Invalid email or password");
+                } else if (response.code() == 400) {
+                    callback.onError(ErrorKind.VALIDATION, "Please check your email and password");
                 } else {
-                    callback.onError("Invalid email or password (401)");
+                    callback.onError(ErrorKind.SERVER, "Something went wrong on our side. Please try again later");
                 }
             }
 
             @Override
             public void onFailure(Call<ApiService.LoginResponse> call, Throwable t) {
-                callback.onError("Network error: " + t.getMessage());
+                callback.onError(ErrorKind.NETWORK, "Can't reach the server. Check your internet connection and try again");
             }
         });
+    }
+
+    /**
+     * Single source of truth for "is the user logged in": a JWT is stored and has not
+     * expired yet. An expired token is removed on the spot.
+     */
+    public boolean isLoggedIn(Context context) {
+        String token = getToken(context);
+        if (token == null) {
+            return false;
+        }
+        if (isExpired(token)) {
+            clearToken(context);
+            return false;
+        }
+        return true;
+    }
+
+    /** Reads the "exp" claim (seconds since epoch) from the JWT payload. Unreadable or missing counts as expired. */
+    private static boolean isExpired(String token) {
+        try {
+            String[] parts = token.split("\\.");
+            if (parts.length != 3) {
+                return true;
+            }
+            byte[] payload = Base64.decode(parts[1], Base64.URL_SAFE | Base64.NO_PADDING | Base64.NO_WRAP);
+            long exp = new JSONObject(new String(payload, StandardCharsets.UTF_8)).optLong("exp", 0);
+            return exp == 0 || exp * 1000 <= System.currentTimeMillis();
+        } catch (IllegalArgumentException | JSONException e) {
+            return true;
+        }
     }
 
     /** Persists the JWT in encrypted storage. */
@@ -108,13 +174,15 @@ public class AuthRepository {
     }
 
     private SharedPreferences getEncryptedPrefs(Context context) throws GeneralSecurityException, IOException {
+        Context appContext = context.getApplicationContext();
+
         // androidx.security.crypto.MasterKeys is deprecated; MasterKey.Builder is the replacement.
-        MasterKey masterKey = new MasterKey.Builder(context)
+        MasterKey masterKey = new MasterKey.Builder(appContext)
                 .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
                 .build();
 
         return EncryptedSharedPreferences.create(
-                context,
+                appContext,
                 PREFS_FILE,
                 masterKey,
                 EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,

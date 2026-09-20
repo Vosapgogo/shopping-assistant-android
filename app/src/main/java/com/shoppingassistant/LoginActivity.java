@@ -85,9 +85,6 @@ public class LoginActivity extends AppCompatActivity {
         authRepository.login(email, password, this, new AuthRepository.AuthCallback() {
             @Override
             public void onSuccess(String message) {
-                android.content.SharedPreferences prefs = getSharedPreferences("AppPrefs", MODE_PRIVATE);
-                prefs.edit().putBoolean("isLoggedIn", true).apply();
-
                 Toast.makeText(LoginActivity.this, message, Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
@@ -97,15 +94,20 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onError(String error) {
+            public void onError(AuthRepository.ErrorKind kind, String error) {
                 // Only log details in debug builds — release logcat shouldn't
                 // carry auth failure details (and definitely never passwords).
                 if (BuildConfig.DEBUG) {
-                    Log.d(TAG, "Login error: " + error);
+                    Log.d(TAG, "Login error (" + kind + "): " + error);
                 }
-                Toast.makeText(LoginActivity.this, error, Toast.LENGTH_LONG).show();
-                layoutEmail.setError("Invalid email or password");
-                layoutPassword.setError("Invalid email or password");
+
+                if (kind == AuthRepository.ErrorKind.INVALID_CREDENTIALS) {
+                    // Only wrong credentials point at the fields; network/server problems must not
+                    layoutEmail.setError(error);
+                    layoutPassword.setError(error);
+                } else {
+                    Toast.makeText(LoginActivity.this, error, Toast.LENGTH_LONG).show();
+                }
             }
         });
     }

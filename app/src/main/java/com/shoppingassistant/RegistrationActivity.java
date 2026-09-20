@@ -96,26 +96,35 @@ public class RegistrationActivity extends AppCompatActivity {
         }
 
         if (isValid) {
-            // Send data to backend repository, now including the name parameter
-            authRepository.register(name, email, password, new AuthRepository.AuthCallback() {
+            // The repository registers and then logs in, so a JWT is stored by the time onSuccess fires
+            authRepository.register(name, email, password, this, new AuthRepository.AuthCallback() {
                 @Override
                 public void onSuccess(String message) {
-                    android.content.SharedPreferences prefs = getSharedPreferences("AppPrefs", MODE_PRIVATE);
-                    android.content.SharedPreferences.Editor editor = prefs.edit();
-                    editor.putBoolean("isLoggedIn", true);
-                    editor.apply();
+                    Toast.makeText(RegistrationActivity.this, message, Toast.LENGTH_SHORT).show();
 
-                    Toast.makeText(RegistrationActivity.this, "Account created successfully!", Toast.LENGTH_SHORT).show();
-
+                    // Clear the back stack so "Back" from Main can't return to Welcome/Registration
                     Intent intent = new Intent(RegistrationActivity.this, MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
-
                     finish();
                 }
 
                 @Override
-                public void onError(String error) {
-                    Toast.makeText(RegistrationActivity.this, error, Toast.LENGTH_LONG).show();
+                public void onError(AuthRepository.ErrorKind kind, String error) {
+                    switch (kind) {
+                        case EMAIL_TAKEN:
+                            layoutEmail.setError(error);
+                            break;
+                        case ACCOUNT_CREATED_LOGIN_FAILED:
+                            // Registering again would only give "email already registered" — send them to log in
+                            Toast.makeText(RegistrationActivity.this, error, Toast.LENGTH_LONG).show();
+                            startActivity(new Intent(RegistrationActivity.this, LoginActivity.class));
+                            finish();
+                            break;
+                        default:
+                            Toast.makeText(RegistrationActivity.this, error, Toast.LENGTH_LONG).show();
+                            break;
+                    }
                 }
             });
         }

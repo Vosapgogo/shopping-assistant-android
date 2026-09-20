@@ -11,13 +11,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
+import com.shoppingassistant.repository.AuthRepository;
 
 public class MainActivity extends AppCompatActivity {
+
+    private AuthRepository authRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        authRepository = new AuthRepository();
 
         MaterialButton btnCreateList = findViewById(R.id.btn_create_list);
         btnCreateList.setOnClickListener(v -> showCreateListDialog());
@@ -53,6 +58,19 @@ public class MainActivity extends AppCompatActivity {
 
             return false;
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        // The token may have expired while the app sat in the background
+        if (!authRepository.isLoggedIn(this)) {
+            Intent intent = new Intent(this, WelcomeActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
+        }
     }
 
     private void showCreateListDialog() {
