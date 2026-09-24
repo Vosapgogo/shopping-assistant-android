@@ -20,7 +20,6 @@ jobs:
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
         with:
-          # Default is 'tools platform-tools'; the legacy 'tools' package no longer exists in cmdline-tools 16+
           packages: platform-tools
 
       - name: Grant execute permission for gradlew
