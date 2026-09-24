@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.button.MaterialButton;
 import com.shoppingassistant.repository.AuthRepository;
 
@@ -21,6 +22,17 @@ public class ProfileActivity extends AppCompatActivity {
 
         MaterialButton btnLogout = findViewById(R.id.btnLogout);
         btnLogout.setOnClickListener(v -> performLogout());
+
+        // Highlight the Profile tab; any other tab returns to MainActivity, which opened this screen.
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        bottomNav.setSelectedItemId(R.id.nav_profile);
+        bottomNav.setOnItemSelectedListener(item -> {
+            if (item.getItemId() == R.id.nav_profile) {
+                return true;
+            }
+            finish();
+            return false;
+        });
     }
 
     private void performLogout() {
