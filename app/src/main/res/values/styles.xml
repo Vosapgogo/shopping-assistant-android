@@ -21,4 +21,32 @@
         <item name="android:textAllCaps">false</item>
         <item name="fontFamily">@font/nunito</item>
     </style>
+
+    <!-- Circular shape for avatars -->
+    <style name="ShapeAppearance.Circle" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <!-- Row inside the profile settings card -->
+    <style name="ProfileMenuItem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingHorizontal">16dp</item>
+        <item name="android:paddingVertical">18dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+        <item name="android:drawablePadding">16dp</item>
+        <item name="android:textColor">@color/text_black</item>
+        <item name="android:textSize">16sp</item>
+        <item name="drawableEndCompat">@drawable/ic_chevron_right</item>
+        <item name="drawableTint">@color/text_dark_grey</item>
+    </style>
+
+    <style name="ProfileMenuDivider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_marginHorizontal">16dp</item>
+        <item name="android:background">@color/divider_grey</item>
+    </style>
 </resources>

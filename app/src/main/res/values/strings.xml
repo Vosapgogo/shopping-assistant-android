@@ -52,4 +52,14 @@
     <string name="don_t_have_an_account">Don\'t have an account?</string>
     <string name="sign_up">Sign up</string>
     <string name="continue_with_google">Continue with Google</string>
+
+    <!-- Profile -->
+    <string name="title_profile">Profile</string>
+    <string name="profile_avatar">Profile picture</string>
+    <string name="notifications">Notifications</string>
+    <string name="profile_account_settings">Account Settings</string>
+    <string name="profile_preferences">Preferences</string>
+    <string name="profile_help_support">Help &amp; Support</string>
+    <string name="profile_about_app">About App</string>
+    <string name="btn_log_out">Log Out</string>
 </resources>
