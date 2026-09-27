@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Clipboard with a pencil inside a soft green circle (Create New List screen) -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="200"
+    android:viewportHeight="200">
+
+    <!-- Background circle -->
+    <path
+        android:fillColor="#E6EFE4"
+        android:pathData="M100,0 A100,100 0 1 1 100,200 A100,100 0 1 1 100,0 Z" />
+
+    <!-- Clipboard board + paper -->
+    <path
+        android:fillColor="#A9CFAB"
+        android:pathData="M66,54 H122 A10,10 0 0 1 132,64 V142 A10,10 0 0 1 122,152 H66 A10,10 0 0 1 56,142 V64 A10,10 0 0 1 66,54 Z" />
+    <path
+        android:fillColor="#FBF8F2"
+        android:pathData="M69,61 H119 A6,6 0 0 1 125,67 V139 A6,6 0 0 1 119,145 H69 A6,6 0 0 1 63,139 V67 A6,6 0 0 1 69,61 Z" />
+
+    <!-- Clip -->
+    <path
+        android:fillColor="#2E7D32"
+        android:pathData="M84,46 H104 A6,6 0 0 1 110,52 V58 A6,6 0 0 1 104,64 H84 A6,6 0 0 1 78,58 V52 A6,6 0 0 1 84,46 Z" />
+    <path
+        android:fillColor="#2E7D32"
+        android:pathData="M94,36 A7,7 0 1 1 94,50 A7,7 0 1 1 94,36 Z" />
+    <path
+        android:fillColor="#E6EFE4"
+        android:pathData="M94,40 A3,3 0 1 1 94,46 A3,3 0 1 1 94,40 Z" />
+
+    <!-- Checklist dots -->
+    <path
+        android:fillColor="#6FB372"
+        android:pathData="M74,82 A4.5,4.5 0 1 1 74,91 A4.5,4.5 0 1 1 74,82 Z M74,102 A4.5,4.5 0 1 1 74,111 A4.5,4.5 0 1 1 74,102 Z M74,122 A4.5,4.5 0 1 1 74,131 A4.5,4.5 0 1 1 74,122 Z" />
+
+    <!-- Checklist lines -->
+    <path
+        android:fillColor="#C9E1C9"
+        android:pathData="M86.5,84 H113.5 A2.5,2.5 0 0 1 116,86.5 A2.5,2.5 0 0 1 113.5,89 H86.5 A2.5,2.5 0 0 1 84,86.5 A2.5,2.5 0 0 1 86.5,84 Z M86.5,104 H113.5 A2.5,2.5 0 0 1 116,106.5 A2.5,2.5 0 0 1 113.5,109 H86.5 A2.5,2.5 0 0 1 84,106.5 A2.5,2.5 0 0 1 86.5,104 Z M86.5,124 H113.5 A2.5,2.5 0 0 1 116,126.5 A2.5,2.5 0 0 1 113.5,129 H86.5 A2.5,2.5 0 0 1 84,126.5 A2.5,2.5 0 0 1 86.5,124 Z" />
+
+    <!-- Pencil, drawn upright around (0,0) then tilted so the tip points down-left -->
+    <group
+        android:rotation="35"
+        android:translateX="142"
+        android:translateY="112">
+
+        <!-- Eraser cap -->
+        <path
+            android:fillColor="#E9D9A6"
+            android:pathData="M-5,-52 H5 A3,3 0 0 1 8,-49 V-45 A3,3 0 0 1 5,-42 H-5 A3,3 0 0 1 -8,-45 V-49 A3,3 0 0 1 -5,-52 Z" />
+
+        <!-- Body -->
+        <path
+            android:fillColor="#2E7D32"
+            android:pathData="M-8,-42 H8 V18 H-8 Z" />
+        <path
+            android:fillColor="#43A047"
+            android:pathData="M-8,-42 H0 V18 H-8 Z" />
+
+        <!-- Wooden tip + lead -->
+        <path
+            android:fillColor="#F3DFBE"
+            android:pathData="M-8,18 H8 L0,36 Z" />
+        <path
+            android:fillColor="#1B5E20"
+            android:pathData="M-2.7,30 H2.7 L0,36 Z" />
+    </group>
+</vector>

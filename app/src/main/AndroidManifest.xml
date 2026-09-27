@@ -46,6 +46,12 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
+        <!-- Create New List Screen -->
+        <activity
+            android:name=".CreateListActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
         <!-- Profile Screen -->
         <activity
             android:name=".ProfileActivity"
