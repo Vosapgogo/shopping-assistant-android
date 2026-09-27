@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- ===== Text: one type scale for every screen (sizes live in dimens.xml) ===== -->
 
     <!-- Tab screen titles ("My Lists", "Profile") and the splash app name -->
     <style name="Text.App.Display" parent="">
         <item name="android:textSize">@dimen/text_display</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textFontWeight">900</item>
+        <!-- Extra-heavy weight only exists on Android 9+; older devices just use bold -->
+        <item name="android:textFontWeight" tools:targetApi="28">900</item>
         <item name="android:textColor">@color/text_black</item>
     </style>
 
