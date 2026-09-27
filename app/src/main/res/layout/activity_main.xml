@@ -13,63 +13,132 @@
         android:layout_alignParentTop="true"
         app:title="@string/title_my_lists" />
 
-    <ScrollView
+    <!-- Lists tab: the list cards, or the empty state when there are none -->
+    <FrameLayout
         android:id="@+id/content_lists"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/page_header"
-        android:layout_above="@id/bottom_navigation"
-        android:fillViewport="true"
-        android:scrollbars="none">
+        android:layout_above="@id/bottom_navigation">
 
-        <LinearLayout
-            android:id="@+id/empty_state_container"
+        <!-- Hidden until Room has answered, so it doesn't flash before the lists appear -->
+        <ScrollView
+            android:id="@+id/empty_state"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:paddingHorizontal="@dimen/screen_padding_horizontal"
-            android:paddingVertical="16dp">
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:scrollbars="none"
+            android:visibility="gone">
 
-            <!-- Picture -->
-            <ImageView
-                android:id="@+id/empty_state_image"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/illustration_size"
-                android:layout_marginBottom="24dp"
-                android:adjustViewBounds="true"
-                android:importantForAccessibility="no"
-                android:scaleType="fitCenter"
-                android:src="@drawable/img_empty_lists" />
-
-            <!-- Main text -->
-            <TextView
-                style="@style/Text.App.Title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/empty_state_title"
-                android:textAlignment="center"
-                android:layout_marginBottom="12dp" />
-
-            <!-- Subtext -->
-            <TextView
-                style="@style/Text.App.Body"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/empty_state_subtitle"
-                android:textAlignment="center"
-                android:layout_marginBottom="@dimen/section_spacing" />
-
-            <!-- Button "Create New List" -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_create_list"
-                style="@style/Widget.App.Button"
+            <LinearLayout
+                android:id="@+id/empty_state_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/btn_create_new_list" />
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/screen_padding_horizontal"
+                android:paddingVertical="16dp">
 
+                <!-- Picture -->
+                <ImageView
+                    android:id="@+id/empty_state_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/illustration_size"
+                    android:layout_marginBottom="24dp"
+                    android:adjustViewBounds="true"
+                    android:importantForAccessibility="no"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/img_empty_lists" />
+
+                <!-- Main text -->
+                <TextView
+                    style="@style/Text.App.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/empty_state_title"
+                    android:textAlignment="center"
+                    android:layout_marginBottom="12dp" />
+
+                <!-- Subtext -->
+                <TextView
+                    style="@style/Text.App.Body"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/empty_state_subtitle"
+                    android:textAlignment="center"
+                    android:layout_marginBottom="@dimen/section_spacing" />
+
+                <!-- Button "Create New List" -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_create_list"
+                    style="@style/Widget.App.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_create_new_list" />
+
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- Search + cards, shown once there is at least one list -->
+        <LinearLayout
+            android:id="@+id/lists_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_search"
+                style="@style/Widget.App.TextField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/screen_padding_horizontal"
+                android:layout_marginBottom="12dp"
+                app:endIconMode="clear_text"
+                app:startIconDrawable="@drawable/ic_search">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/search_lists"
+                    android:imeOptions="actionSearch"
+                    android:inputType="text"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tv_no_match"
+                style="@style/Text.App.Body"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:gravity="center"
+                android:text="@string/no_lists_match"
+                android:visibility="gone" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_lists"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:paddingHorizontal="@dimen/screen_padding_horizontal"
+                android:paddingBottom="96dp"
+                android:scrollbars="none" />
         </LinearLayout>
-    </ScrollView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_create_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/screen_padding_horizontal"
+            android:contentDescription="@string/btn_create_new_list"
+            android:visibility="gone"
+            app:backgroundTint="@color/brand_green"
+            app:srcCompat="@drawable/ic_add"
+            app:tint="@color/white" />
+    </FrameLayout>
 
     <!-- Bottom Navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView

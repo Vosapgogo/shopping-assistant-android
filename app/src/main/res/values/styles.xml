@@ -32,6 +32,13 @@
         <item name="android:textColor">@color/text_black</item>
     </style>
 
+    <!-- Card titles (a list's name on My Lists) -->
+    <style name="Text.App.Subtitle" parent="">
+        <item name="android:textSize">@dimen/text_subtitle</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/text_black</item>
+    </style>
+
     <!-- Subtitles and regular text -->
     <style name="Text.App.Body" parent="">
         <item name="android:textSize">@dimen/text_body</item>

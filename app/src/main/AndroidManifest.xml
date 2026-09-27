@@ -52,6 +52,11 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
+        <!-- Shopping List Details Screen -->
+        <activity
+            android:name=".ShoppingListDetailActivity"
+            android:exported="false" />
+
         <!-- Profile Screen -->
         <activity
             android:name=".ProfileActivity"

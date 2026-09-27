@@ -9,6 +9,7 @@
     <dimen name="text_headline">28sp</dimen>
     <dimen name="text_title">22sp</dimen>
     <dimen name="text_top_bar">20sp</dimen>
+    <dimen name="text_subtitle">18sp</dimen>
 
     <dimen name="button_height">60dp</dimen>
 

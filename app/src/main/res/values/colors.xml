@@ -11,6 +11,18 @@
     <color name="divider_grey">#EEEEEE</color>
     <color name="outline_grey">#E0E0E0</color>
     <color name="avatar_bg">#E3E6E0</color>
+
+    <!-- List card icons: background + icon colour pairs, picked per list so cards look different -->
+    <color name="list_icon_green_bg">#E6EFE4</color>
+    <color name="list_icon_green">#2E7D32</color>
+    <color name="list_icon_purple_bg">#EEE8F7</color>
+    <color name="list_icon_purple">#6A4FB6</color>
+    <color name="list_icon_orange_bg">#FDF0E0</color>
+    <color name="list_icon_orange">#D9822B</color>
+    <color name="list_icon_red_bg">#FCE8E6</color>
+    <color name="list_icon_red">#D2463A</color>
+    <color name="list_icon_blue_bg">#E4EFFA</color>
+    <color name="list_icon_blue">#2F78C0</color>
     <color name="logout_red">#E53935</color>
     <color name="logout_red_ripple">#1FE53935</color>
 </resources>

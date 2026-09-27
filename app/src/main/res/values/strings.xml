@@ -42,6 +42,36 @@
     <string name="empty_state_subtitle">Create your first list to\nstart saving time</string>
     <string name="btn_create_new_list">+ Create New List</string>
 
+    <!-- List cards -->
+    <plurals name="list_item_count">
+        <item quantity="one">%d item</item>
+        <item quantity="other">%d items</item>
+    </plurals>
+    <!-- e.g. "12 items · Updated 2 hours ago" -->
+    <string name="list_meta_updated">%1$s · Updated %2$s</string>
+    <string name="list_updated_just_now">just now</string>
+    <string name="list_meta_not_synced">%1$s · Not synced yet</string>
+    <string name="list_meta_sync_failed">%1$s · Couldn\'t sync</string>
+    <string name="list_progress">%1$d / %2$d</string>
+    <string name="search_lists">Search lists</string>
+    <string name="no_lists_match">No lists match your search</string>
+    <string name="list_actions">List actions</string>
+    <string name="action_rename">Rename</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_save">Save</string>
+    <string name="dialog_rename_list_title">Rename list</string>
+    <!-- %s is the list name -->
+    <string name="dialog_delete_list_title">Delete \u201c%s\u201d?</string>
+    <string name="dialog_delete_list_message">The list and everything in it will be deleted on all your devices.</string>
+    <!-- List details -->
+    <string name="list_empty_title">Your shopping list is empty</string>
+    <string name="list_empty_subtitle">Add items manually or use voice\ninput to get started</string>
+    <string name="action_add_item">Add Item</string>
+    <string name="action_add_with_voice">Add with Voice</string>
+    <string name="msg_add_item_coming">Adding items is coming next</string>
+    <string name="msg_voice_coming">Voice input is coming soon</string>
+    <string name="msg_session_expired">Your session has expired. Please log in again</string>
+
     <!-- Bottom Navigation -->
     <string name="nav_lists">Lists</string>
     <string name="nav_prices">Prices</string>
