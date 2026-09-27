@@ -2,7 +2,6 @@ package com.shoppingassistant;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,6 +11,7 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.shoppingassistant.repository.AuthRepository;
+import com.shoppingassistant.util.SystemBarInsets;
 
 import java.util.regex.Pattern;
 
@@ -29,6 +29,7 @@ public class RegistrationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
+        SystemBarInsets.apply(findViewById(R.id.root), true);
 
         authRepository = new AuthRepository();
 
@@ -41,11 +42,6 @@ public class RegistrationActivity extends AppCompatActivity {
         etEmail = findViewById(R.id.et_email);
         etPassword = findViewById(R.id.et_password);
         etConfirmPassword = findViewById(R.id.et_confirm_password);
-
-        ImageView btnBack = findViewById(R.id.btn_back_register);
-        if (btnBack != null) {
-            btnBack.setOnClickListener(v -> finish());
-        }
 
         TextView tvGoToLogin = findViewById(R.id.tv_go_to_login);
         if (tvGoToLogin != null) {

@@ -2,7 +2,6 @@ package com.shoppingassistant;
 
 import android.os.Bundle;
 import android.view.inputmethod.EditorInfo;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.shoppingassistant.util.SystemBarInsets;
 
 public class CreateListActivity extends AppCompatActivity {
 
@@ -20,14 +20,12 @@ public class CreateListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_list);
+        SystemBarInsets.apply(findViewById(R.id.root), true);
 
         tilListName = findViewById(R.id.til_list_name);
         etListName = findViewById(R.id.et_list_name);
 
-        // Back arrow and Cancel both just close the screen and return to MainActivity
-        ImageView btnBack = findViewById(R.id.btn_back_create_list);
-        btnBack.setOnClickListener(v -> finish());
-
+        // The top bar's back arrow closes the screen by itself; Cancel does the same
         MaterialButton btnCancel = findViewById(R.id.btn_cancel_create_list);
         btnCancel.setOnClickListener(v -> finish());
 

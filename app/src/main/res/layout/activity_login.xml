@@ -1,88 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_light"
-    android:padding="24dp">
+    android:orientation="vertical"
+    tools:context=".LoginActivity">
 
-    <!-- Scrollable content for the input fields -->
-    <!-- Height is 0dp so it takes only the remaining space above the bottom container -->
+    <com.shoppingassistant.ui.TopBarView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="@string/log_in" />
+
+    <!-- Fills the screen when there is room (buttons stay at the bottom), scrolls when there isn't -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:scrollbars="none"
+        android:layout_weight="1"
         android:fillViewport="true"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/bottom_container"
-        android:layout_marginBottom="16dp">
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/screen_padding_horizontal"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp">
 
-            <!-- Top bar -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginBottom="32dp">
-
-                <!-- Back Button -->
-                <ImageView
-                    android:id="@+id/btn_back_login"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:padding="12dp"
-                    android:src="@drawable/ic_arrow_back"
-                    app:tint="@color/text_dark_grey"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:clickable="true"
-                    android:focusable="true"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text="@string/log_in"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/text_dark_grey"/>
-            </LinearLayout>
-
-            <!-- Titles -->
             <TextView
+                style="@style/Text.App.Headline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:text="@string/welcome_back"
-                android:textSize="28sp"
-                android:textStyle="bold"
-                android:textColor="@color/brand_green"
-                android:layout_marginBottom="8dp"/>
+                android:textColor="@color/brand_green" />
 
             <TextView
+                style="@style/Text.App.Body"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/log_in_to_continue_to_your_account"
-                android:textSize="16sp"
-                android:textColor="@color/text_dark_grey"
-                android:layout_marginBottom="32dp"/>
+                android:layout_marginBottom="@dimen/section_spacing"
+                android:text="@string/log_in_to_continue_to_your_account" />
 
-            <!-- Email Field -->
+            <!-- Email -->
             <TextView
+                style="@style/Text.App.Label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/email"
-                android:textStyle="bold"
-                android:textColor="@color/text_dark_grey"
-                android:layout_marginBottom="4dp"/>
+                android:text="@string/email" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/layout_email_login"
-                style="@style/CustomInputField"
+                style="@style/Widget.App.TextField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:startIconDrawable="@drawable/ic_mail">
@@ -91,118 +64,116 @@
                     android:id="@+id/et_email_login"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress"
-                    android:hint="@string/example_email_com"/>
+                    android:hint="@string/example_email_com"
+                    android:inputType="textEmailAddress" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Password Field -->
+            <!-- Password -->
             <TextView
+                style="@style/Text.App.Label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/password"
-                android:textStyle="bold"
-                android:textColor="@color/text_dark_grey"
-                android:layout_marginBottom="4dp"/>
+                android:text="@string/password" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/layout_password_login"
-                style="@style/CustomInputField"
+                style="@style/Widget.App.TextField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:startIconDrawable="@drawable/ic_lock"
-                app:endIconMode="password_toggle">
+                app:endIconMode="password_toggle"
+                app:startIconDrawable="@drawable/ic_lock">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_password_login"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPassword"
-                    android:hint="@string/secret_password"/>
+                    android:hint="@string/secret_password"
+                    android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Forgot Password -->
             <TextView
+                style="@style/Text.App.Link"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/forgot_password"
-                android:textColor="@color/brand_green"
-                android:textStyle="bold"
-                android:layout_marginBottom="32dp"/>
+                android:text="@string/forgot_password" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:minHeight="32dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_login_submit"
+                style="@style/Widget.App.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="@string/log_in" />
+
+            <!-- "or" divider -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/outline_grey" />
+
+                <TextView
+                    style="@style/Text.App.BodySmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="16dp"
+                    android:text="@string/or"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/outline_grey" />
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.App.Button.Outlined.Neutral"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="@string/continue_with_google"
+                app:icon="@drawable/ic_google"
+                app:iconGravity="textStart"
+                app:iconTint="@null" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/Text.App.BodySmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/don_t_have_an_account" />
+
+                <TextView
+                    android:id="@+id/tv_go_to_signup"
+                    style="@style/Text.App.Link"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="4dp"
+                    android:text="@string/sign_up" />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
-    <!-- Bottom Container pinned to the bottom of the screen -->
-    <LinearLayout
-        android:id="@+id/bottom_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <!-- Login Button -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_login_submit"
-            style="@style/CustomPrimaryButton"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:text="@string/log_in"
-            android:layout_marginBottom="24dp"/>
-
-        <!-- Or Divider -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:layout_marginBottom="24dp">
-
-            <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1" android:background="#E0E0E0"/>
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="or" android:paddingHorizontal="16dp" android:textStyle="bold"/>
-            <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1" android:background="#E0E0E0"/>
-        </LinearLayout>
-
-        <!-- Google Button -->
-        <com.google.android.material.button.MaterialButton
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:text="@string/continue_with_google"
-            android:textAllCaps="false"
-            android:textColor="@color/text_dark_grey"
-            app:icon="@drawable/ic_google"
-            app:iconGravity="textStart"
-            app:iconTint="@null"
-            app:cornerRadius="12dp"
-            app:strokeColor="#E0E0E0"
-            android:layout_marginBottom="24dp"/>
-
-        <!-- Sign Up Text -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/don_t_have_an_account"
-                android:textColor="@color/text_dark_grey"/>
-
-            <TextView
-                android:id="@+id/tv_go_to_signup"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/sign_up"
-                android:textColor="@color/brand_green"
-                android:textStyle="bold"
-                android:padding="4dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:background="?attr/selectableItemBackground"/>
-        </LinearLayout>
-    </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

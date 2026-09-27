@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.button.MaterialButton;
+import com.shoppingassistant.util.SystemBarInsets;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -13,6 +14,7 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+        SystemBarInsets.apply(findViewById(R.id.root), true);
 
         // Find the Log In button by its ID
         MaterialButton btnLogin = findViewById(R.id.btn_login);

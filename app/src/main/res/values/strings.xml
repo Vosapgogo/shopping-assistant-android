@@ -28,6 +28,7 @@
     <string name="create_list_subtitle">Give your list a name</string>
     <string name="error_list_name_empty">Please enter a list name</string>
     <string name="action_back">Back</string>
+    <string name="hint_list_name_example">e.g. Weekly groceries</string>
     <string name="hint_list_name">List name</string>
     <string name="dialog_title_new_list">New List</string>
     <string name="action_create">Create</string>
@@ -56,6 +57,17 @@
     <string name="don_t_have_an_account">Don\'t have an account?</string>
     <string name="sign_up">Sign up</string>
     <string name="continue_with_google">Continue with Google</string>
+    <string name="or">or</string>
+
+    <!-- Registration -->
+    <string name="registration_heading">Create your account</string>
+    <string name="registration_subtitle">Sign up to get started</string>
+    <string name="full_name">Full Name</string>
+    <string name="hint_full_name">John Doe</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="terms_checkbox">I agree to the Terms of Service and Privacy Policy</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="log_in_link">Log in</string>
 
     <!-- Profile -->
     <string name="title_profile">Profile</string>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_light">
@@ -11,47 +12,39 @@
         android:layout_centerInParent="true"
         android:gravity="center"
         android:orientation="vertical"
-        android:paddingHorizontal="32dp">
+        android:paddingHorizontal="@dimen/screen_padding_horizontal">
 
-        <!-- Image -->
         <ImageView
             android:id="@+id/splash_image"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="@dimen/illustration_size"
+            android:layout_height="@dimen/illustration_size"
             android:layout_marginBottom="24dp"
-            android:src="@drawable/img_empty_lists"
-            android:contentDescription="@null" />
+            android:contentDescription="@null"
+            android:src="@drawable/img_empty_lists" />
 
-        <!-- App name -->
         <TextView
+            style="@style/Text.App.Display"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/nunito"
+            android:layout_marginBottom="16dp"
+            android:gravity="center"
             android:text="@string/splash_title"
-            android:textAlignment="center"
-            android:textColor="@color/brand_green"
-            android:textSize="32sp"
-            android:textFontWeight="900"
-            android:layout_marginBottom="16dp" />
+            android:textColor="@color/brand_green" />
 
-        <!-- Subtext -->
         <TextView
+            style="@style/Text.App.Body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/nunito"
-            android:text="@string/splash_subtitle"
-            android:textAlignment="center"
-            android:textColor="@color/text_dark_grey"
-            android:textSize="18sp" />
+            android:gravity="center"
+            android:text="@string/splash_subtitle" />
     </LinearLayout>
 
-    <!-- ProgressBar in the bottom -->
     <ProgressBar
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="48dp"
         android:indeterminateTint="@color/brand_green" />
 
 </RelativeLayout>

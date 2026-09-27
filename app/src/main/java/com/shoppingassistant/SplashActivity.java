@@ -8,6 +8,7 @@ import android.os.Looper;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.shoppingassistant.repository.AuthRepository;
+import com.shoppingassistant.util.SystemBarInsets;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -15,6 +16,7 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        SystemBarInsets.apply(findViewById(R.id.root), true);
 
         AuthRepository authRepository = new AuthRepository();
 
