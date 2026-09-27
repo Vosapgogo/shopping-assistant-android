@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.button.MaterialButton;
 import com.shoppingassistant.repository.AuthRepository;
+import com.shoppingassistant.ui.PageHeaderView;
 import com.shoppingassistant.util.SystemBarInsets;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,23 +29,23 @@ public class MainActivity extends AppCompatActivity {
 
         com.google.android.material.bottomnavigation.BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         android.widget.ScrollView contentLists = findViewById(R.id.content_lists);
-        android.widget.TextView tvPageTitle = findViewById(R.id.tv_page_title);
+        PageHeaderView pageHeader = findViewById(R.id.page_header);
 
         bottomNav.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
 
             if (itemId == R.id.nav_lists) {
-                tvPageTitle.setText(R.string.title_my_lists);
+                pageHeader.setTitle(R.string.title_my_lists);
                 contentLists.setVisibility(View.VISIBLE);
 
                 return true;
             } else if (itemId == R.id.nav_prices) {
-                tvPageTitle.setText(R.string.nav_prices);
+                pageHeader.setTitle(R.string.nav_prices);
                 contentLists.setVisibility(View.GONE);
 
                 return true;
             } else if (itemId == R.id.nav_map) {
-                tvPageTitle.setText(R.string.nav_map);
+                pageHeader.setTitle(R.string.nav_map);
                 contentLists.setVisibility(View.GONE);
 
                 return true;

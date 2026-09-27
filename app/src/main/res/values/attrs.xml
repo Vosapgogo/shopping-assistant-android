@@ -4,4 +4,8 @@
         <!-- Reuses AppCompat's "title" attribute: app:title="@string/..." -->
         <attr name="title" />
     </declare-styleable>
+
+    <declare-styleable name="PageHeaderView">
+        <attr name="title" />
+    </declare-styleable>
 </resources>

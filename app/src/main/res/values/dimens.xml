@@ -5,6 +5,8 @@
     <dimen name="screen_padding_horizontal">16dp</dimen>
     <!-- The back arrow has 12dp of built-in padding, so its glyph lines up with the content -->
     <dimen name="top_bar_padding_start">4dp</dimen>
+    <!-- Same idea for the bell in PageHeaderView (8dp built-in padding) -->
+    <dimen name="page_header_padding_end">8dp</dimen>
 
     <!-- Type scale -->
     <dimen name="text_display">28sp</dimen>
