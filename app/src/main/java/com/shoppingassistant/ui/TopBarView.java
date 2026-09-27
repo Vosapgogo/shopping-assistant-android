@@ -9,9 +9,11 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import androidx.activity.ComponentActivity;
+import androidx.annotation.MenuRes;
 import androidx.annotation.Nullable;
 
 import com.shoppingassistant.R;
@@ -27,11 +29,13 @@ import com.shoppingassistant.R;
  * </pre>
  *
  * The arrow behaves like the system Back button (normally closing the screen); call
- * {@link #setOnBackClickListener} when a screen needs something else.
+ * {@link #setOnBackClickListener} when a screen needs something else. {@link #setMenu} adds a "⋮"
+ * button on the right for screen actions.
  */
 public class TopBarView extends LinearLayout {
 
     private final ImageButton backButton;
+    private final ImageButton menuButton;
     private final TextView titleView;
 
     public TopBarView(Context context) {
@@ -50,6 +54,7 @@ public class TopBarView extends LinearLayout {
 
         LayoutInflater.from(context).inflate(R.layout.view_top_bar, this, true);
         backButton = findViewById(R.id.top_bar_back);
+        menuButton = findViewById(R.id.top_bar_menu);
         titleView = findViewById(R.id.top_bar_title);
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.TopBarView);
@@ -72,6 +77,19 @@ public class TopBarView extends LinearLayout {
 
     public void setOnBackClickListener(OnClickListener listener) {
         backButton.setOnClickListener(listener);
+    }
+
+    /** Shows the "⋮" button; tapping it opens {@code menuRes} as a popup. */
+    public void setMenu(@MenuRes int menuRes, PopupMenu.OnMenuItemClickListener listener) {
+        // The button brings its own padding, so the bar doesn't need the usual end padding
+        setPaddingRelative(getPaddingStart(), getPaddingTop(), dp(4), getPaddingBottom());
+        menuButton.setVisibility(VISIBLE);
+        menuButton.setOnClickListener(v -> {
+            PopupMenu menu = new PopupMenu(getContext(), v);
+            menu.inflate(menuRes);
+            menu.setOnMenuItemClickListener(listener);
+            menu.show();
+        });
     }
 
     private int dp(int value) {

@@ -25,4 +25,16 @@
         android:layout_weight="1"
         android:ellipsize="end"
         android:maxLines="1" />
+
+    <!-- Only shown when the screen gives the bar a menu (TopBarView.setMenu) -->
+    <ImageButton
+        android:id="@+id/top_bar_menu"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/more_options"
+        android:padding="12dp"
+        android:src="@drawable/ic_more_vert"
+        android:visibility="gone"
+        app:tint="@color/text_black" />
 </merge>
