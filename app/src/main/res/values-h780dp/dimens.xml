@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Tall phones -->
+<resources>
+    <dimen name="illustration_size">200dp</dimen>
+    <dimen name="section_spacing">32dp</dimen>
+</resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Phones with average height -->
+<resources>
+    <dimen name="illustration_size">150dp</dimen>
+    <dimen name="section_spacing">28dp</dimen>
+</resources>

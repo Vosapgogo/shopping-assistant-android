@@ -7,5 +7,12 @@
 
         <item name="colorOnPrimary">@android:color/white</item>
         <item name="fontFamily">@font/nunito</item>
+        <item name="android:fontFamily">@font/nunito</item>
+        <item name="android:windowBackground">@color/bg_light</item>
+
+        <!-- Buttons and fields without an explicit style still get the app look -->
+        <item name="materialButtonStyle">@style/Widget.App.Button</item>
+        <item name="materialButtonOutlinedStyle">@style/Widget.App.Button.Outlined</item>
+        <item name="textInputStyle">@style/Widget.App.TextField</item>
     </style>
 </resources>
