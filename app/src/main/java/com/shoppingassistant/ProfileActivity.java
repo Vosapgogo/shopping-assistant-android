@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.button.MaterialButton;
 import com.shoppingassistant.repository.AuthRepository;
+import com.shoppingassistant.repository.ShoppingListRepository;
 import com.shoppingassistant.util.SystemBarInsets;
 
 public class ProfileActivity extends AppCompatActivity {
@@ -39,8 +40,10 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void performLogout() {
         // 1. Clear the encrypted JWT — it is the only login state there is, so removing
-        //    it logs the user out (and it no longer outlives the session).
+        //    it logs the user out (and it no longer outlives the session). The account's lists
+        //    are removed from the device too; they stay on the server for the next login.
         authRepository.clearToken(this);
+        ShoppingListRepository.getInstance(this).clearLocalData();
 
         // 2. Show a quick confirmation message
         Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show();

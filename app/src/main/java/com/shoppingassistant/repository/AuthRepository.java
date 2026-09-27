@@ -101,6 +101,8 @@ public class AuthRepository {
                     String token = response.body().token;
                     try {
                         saveToken(context, token);
+                        // Local lists belong to one account; a different account must not see them
+                        ShoppingListRepository.getInstance(context).onSignedIn(email);
                         callback.onSuccess("Login successful!");
                     } catch (GeneralSecurityException | IOException e) {
                         callback.onError(ErrorKind.SERVER, "Could not store your session securely on this device");

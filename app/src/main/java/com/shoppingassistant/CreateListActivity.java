@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.shoppingassistant.repository.ShoppingListRepository;
 import com.shoppingassistant.util.SystemBarInsets;
 
 public class CreateListActivity extends AppCompatActivity {
@@ -50,7 +51,9 @@ public class CreateListActivity extends AppCompatActivity {
         }
         tilListName.setError(null);
 
-        // TODO: save the list via the backend once the lists API is wired up
+        // Saved on the phone right away; the repository sends it to the server in the background
+        ShoppingListRepository.getInstance(this).createList(listName);
+
         String msg = getString(R.string.msg_list_created) + listName;
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
         finish();
